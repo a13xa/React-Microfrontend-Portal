@@ -23,7 +23,7 @@ export function usePortalEvent<K extends keyof PortalEventMap>(
 
   useEffect(() => {
     const eventName = `portal:${type}`;
-    const listener = (e: Event) => {
+    const listener = (e: Event): void => {
       const customEvent = e as CustomEvent<PortalEventMap[K]>;
       handlerRef.current(customEvent.detail);
     };

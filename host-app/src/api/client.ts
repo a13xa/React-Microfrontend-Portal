@@ -18,6 +18,7 @@ apiClient.interceptors.request.use(
         const { token } = JSON.parse(stored) as { token: string };
         config.headers.Authorization = `Bearer ${token}`;
       } catch {
+        // ignore parse errors
       }
     }
     return config;

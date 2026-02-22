@@ -1,7 +1,8 @@
+import React from 'react';
 import { render, screen, act } from '@testing-library/react';
 import { ToastProvider, useToast } from '../components/Toast';
 
-function TestComponent() {
+function TestComponent(): React.ReactElement {
   const { addToast } = useToast();
   return (
     <button onClick={() => addToast('Operation successful', 'success', 1000)}>

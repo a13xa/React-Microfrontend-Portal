@@ -63,7 +63,7 @@ const TableRowMemo = React.memo(function TableRow<T>({
 }) {
   return (
     <tr
-      onClick={onRowClick ? () => onRowClick(item) : undefined}
+      onClick={onRowClick ? (): void => onRowClick(item) : undefined}
       style={{
         backgroundColor: index % 2 === 1 ? tokens.colors.surfaceRaised : tokens.colors.surface,
         cursor: onRowClick ? 'pointer' : 'default',
@@ -125,10 +125,10 @@ export function Table<T>({
                     cursor: col.sortable ? 'pointer' : 'default',
                     userSelect: col.sortable ? 'none' : 'auto',
                   }}
-                  onClick={col.sortable && onSort ? () => onSort(col.key) : undefined}
+                  onClick={col.sortable && onSort ? (): void => onSort(col.key) : undefined}
                   onKeyDown={
                     col.sortable && onSort
-                      ? (e) => {
+                      ? (e): void => {
                           if (e.key === 'Enter' || e.key === ' ') {
                             e.preventDefault();
                             onSort(col.key);

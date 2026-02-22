@@ -76,7 +76,7 @@ export const DashboardPage: React.FC = () => {
               fontSize: tokens.fontSize.sm,
               color: tokens.colors.textTertiary,
             }}>
-              Here's what's happening today.
+              Here&apos;s what&apos;s happening today.
             </p>
           </div>
           <div style={{ display: 'flex', gap: tokens.spacing.sm, marginTop: '4px' }}>
