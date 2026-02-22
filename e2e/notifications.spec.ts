@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('Notifications Module', () => {
   test.beforeEach(async ({ page }) => {
     await page.goto('/login');
-    await page.getByLabel('Email').fill('admin@portal.com');
+    await page.getByLabel('Email').fill('janis.berzins@portals.lv');
     await page.getByLabel('Password').fill('admin123');
     await page.getByRole('button', { name: 'Sign In' }).click();
     await page.getByRole('link', { name: 'Notifications' }).click();

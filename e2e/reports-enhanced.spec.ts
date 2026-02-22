@@ -12,7 +12,7 @@ test.describe('Reports Enhanced', () => {
   });
 
   test('displays reports table with data', async ({ page }) => {
-    await expect(page.getByLabelText('Data table')).toBeVisible();
+    await expect(page.getByRole('table', { name: 'Data table' })).toBeVisible();
     await expect(page.getByText('Q4 Revenue Analysis')).toBeVisible();
   });
 
@@ -37,7 +37,7 @@ test.describe('Reports Enhanced', () => {
   test('filters by status', async ({ page }) => {
     await page.getByRole('button', { name: 'Failed' }).click();
     await page.waitForTimeout(500);
-    await expect(page.getByText('Failed')).toBeVisible();
+    await expect(page.getByText('Failed').first()).toBeVisible();
   });
 
   test('has sortable column headers', async ({ page }) => {
@@ -47,15 +47,15 @@ test.describe('Reports Enhanced', () => {
   });
 
   test('shows pagination for many reports', async ({ page }) => {
-    await expect(page.getByLabelText('Pagination')).toBeVisible();
-    await expect(page.getByLabelText('Page 1')).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Pagination' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Page 1' })).toBeVisible();
   });
 
   test('navigates between pages', async ({ page }) => {
-    const nextBtn = page.getByLabelText('Next page');
+    const nextBtn = page.getByRole('button', { name: 'Next page' });
     await expect(nextBtn).toBeVisible();
     await nextBtn.click();
-    await expect(page.getByLabelText('Page 2')).toHaveAttribute('aria-current', 'page');
+    await expect(page.getByRole('button', { name: 'Page 2' })).toHaveAttribute('aria-current', 'page');
   });
 
   test('shows total count', async ({ page }) => {

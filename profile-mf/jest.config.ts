@@ -9,7 +9,7 @@ const config: Config = {
 
   moduleNameMapper: {
     '^@portal/shared-ui(.*)$': '<rootDir>/../shared-ui/src$1',
-    '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts',
+    '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts'
   },
 
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
