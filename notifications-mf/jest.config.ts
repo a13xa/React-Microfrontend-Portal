@@ -6,13 +6,12 @@ const config: Config = {
   roots: ['<rootDir>/src'],
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testMatch: ['**/__tests__/**/*.test.ts?(x)'],
-
+  
   moduleNameMapper: {
     '^@portal/shared-ui(.*)$': '<rootDir>/../shared-ui/src$1',
-    '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts',
+    '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts'
   },
-
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts']
 };
 
 export default config;
