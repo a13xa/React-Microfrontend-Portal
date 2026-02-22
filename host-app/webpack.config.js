@@ -23,7 +23,10 @@ module.exports = (env, argv) => {
       rules: [
         {
           test: /\.tsx?$/,
-          use: 'ts-loader',
+          use: {
+            loader: 'ts-loader',
+            options: { transpileOnly: true },
+          },
           exclude: /node_modules/,
         },
         {
@@ -61,6 +64,9 @@ module.exports = (env, argv) => {
       port: 3000,
       historyApiFallback: true,
       hot: true,
+      client: {
+        overlay: false,
+      },
       headers: {
         'Access-Control-Allow-Origin': '*',
       },
