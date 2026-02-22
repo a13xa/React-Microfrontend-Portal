@@ -1,0 +1,11 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist",
+    "paths": {
+      "@portal/shared-ui": ["../shared-ui/src"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["src/__tests__", "src/**/*.test.ts", "src/**/*.test.tsx"]
+}

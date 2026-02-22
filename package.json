@@ -1,0 +1,31 @@
+{
+  "name": "enterprise-react-microfrontend-portal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enterprise React Microfrontend Portal demonstrating Module Federation architecture",
+  "workspaces": [
+    "shared-ui",
+    "host-app",
+    "profile-mf",
+    "notifications-mf",
+    "reports-mf"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=shared-ui\" \"npm run dev --workspace=profile-mf\" \"npm run dev --workspace=notifications-mf\" \"npm run dev --workspace=reports-mf\" \"npm run dev --workspace=host-app\"",
+    "build": "npm run build --workspace=shared-ui && npm run build --workspaces --if-present",
+    "test": "npm run test --workspaces --if-present",
+    "test:e2e": "npx playwright test",
+    "lint": "npm run lint --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@typescript-eslint/eslint-plugin": "^6.15.0",
+    "@typescript-eslint/parser": "^6.15.0",
+    "concurrently": "^8.2.2",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
