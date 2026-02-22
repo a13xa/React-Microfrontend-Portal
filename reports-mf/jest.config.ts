@@ -7,7 +7,7 @@ const config: Config = {
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
   testMatch: ['**/__tests__/**/*.test.ts?(x)'],
   moduleNameMapper: {
-    '@portal/shared-ui': '<rootDir>/../shared-ui/src',
+    '^@portal/shared-ui(.*)$': '<rootDir>/../shared-ui/src$1',
     '\\.(css)$': '<rootDir>/src/__mocks__/styleMock.ts',
   },
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
