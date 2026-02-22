@@ -1,5 +1,4 @@
-import { render, screen, waitFor, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import NotificationsModule from '../NotificationsModule';
 import * as api from '../api';
 
@@ -58,7 +57,6 @@ describe('NotificationsModule', () => {
   });
 
   it('marks notification as read with optimistic update', async () => {
-    const user = userEvent.setup();
     (api.fetchNotifications as jest.Mock).mockResolvedValue(mockNotifications);
     (api.markNotificationAsRead as jest.Mock).mockResolvedValue(undefined);
     render(<NotificationsModule />);
@@ -66,10 +64,10 @@ describe('NotificationsModule', () => {
       expect(screen.getByText('System Update')).toBeInTheDocument();
     });
     const markReadButton = screen.getByLabelText('Mark notification 1 as read');
-    await act(async () => {
-      await user.click(markReadButton);
+    fireEvent.click(markReadButton);
+    await waitFor(() => {
+      expect(api.markNotificationAsRead).toHaveBeenCalledWith('1');
     });
-    expect(api.markNotificationAsRead).toHaveBeenCalledWith('1');
   });
 
   it('shows unread count', async () => {

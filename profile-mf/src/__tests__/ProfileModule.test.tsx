@@ -1,5 +1,4 @@
-import { render, screen, waitFor, act } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
+import { render, screen, waitFor, fireEvent } from '@testing-library/react';
 import ProfileModule from '../ProfileModule';
 import * as api from '../api';
 
@@ -48,15 +47,14 @@ describe('ProfileModule', () => {
   });
 
   it('enters edit mode when Edit button is clicked', async () => {
-    const user = userEvent.setup();
     (api.fetchUserProfile as jest.Mock).mockResolvedValue(mockProfile);
     render(<ProfileModule />);
     await waitFor(() => {
       expect(screen.getByText('Edit')).toBeInTheDocument();
     });
-    await act(async () => {
-      await user.click(screen.getByText('Edit'));
+    fireEvent.click(screen.getByText('Edit'));
+    await waitFor(() => {
+      expect(screen.getByLabelText('Name')).toBeInTheDocument();
     });
-    expect(screen.getByLabelText('Name')).toBeInTheDocument();
   });
 });
